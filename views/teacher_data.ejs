@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        </style>
+        </head>
+        <body>
+        
+        <h2>Table Teacher</h2>
+        
+        <table>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Option</th>
+          </tr>
+          <%for(let i=0;i<allData.length;i++){%>
+          <tr>
+             
+            <td><%=allData[i].first_name%></td>
+            <td><%=allData[i].last_name%></td>
+            <td><%=allData[i].email%></td>
+            <td>
+                <a href ="/teacher/<%=allData[i].id%>/edit">edit</a>
+                <a href ="/teacher/<%=allData[i].id%>/delete">delete</a>
+            
+            </td>
+          </tr>
+          <%}%>
+        </table>
+
+
+
+</body>
+</html>
