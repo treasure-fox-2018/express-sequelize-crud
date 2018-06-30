@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<h2>Students Data</h2>
+
+<table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% studentData.forEach(student => { %>
+        <tr>
+          <td><%= student.id %></td>
+          <td><%= student.firstName %></td>
+          <td><%= student.lastName %></td>
+          <td><%= student.email %></td>
+          <td><a href = "/students/edit/<%=student.id%>">edit</a> || <a href="/students/delete/<%=student.id%>" onclick = "return confirm('delete this student?')"> delete</a> </td>
+        </tr>
+      <% })%>
+    </tbody>
+  </table>
+  <p><a href ="/students/add">add student</a></p>
+</body>
+</html>
+
