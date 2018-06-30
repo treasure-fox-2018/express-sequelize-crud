@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    table,th,td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  <title><%= category %></title>
+</head>
+<body>
+  <% if (category === 'subject') { %>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Subject name</th>
+        <th>Actions</th>
+      </tr>
+      <% data.forEach(subject => { %>
+      <tr>
+        <td><%= subject.id %></td>
+        <td><%= subject.subject_name %></td>
+        <td>
+            <a href="/subject/edit/<%= subject.id %>">Edit</a> | 
+            <a href="/subject/delete/<%= subject.id %>">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  <% } else { %>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <% data.forEach(instance => { %>
+      <tr>
+        <td><%= instance.id %></td>
+        <td><%= instance.first_name %></td>
+        <td><%= instance.last_name %></td>
+        <td><%= instance.email %></td>
+        <td>
+            <a href="/<%= category %>s/edit/<%= instance.id %>">Edit</a> | 
+            <a href="/<%= category %>s/delete/<%= instance.id %>">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  <% } %>
+  
+</body>
+</html>
