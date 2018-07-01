@@ -12,6 +12,8 @@ const routesSubject = require('./routes/subject')
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.set('view engine', 'ejs')
+app.use(express.static('public'))
+
 app.use(routesIndex)
 app.use(routesTeacher)
 app.use(routesStudent)
