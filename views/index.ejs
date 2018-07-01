@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+      /* Green */
+
+      .success {
+        border-color: #4CAF50;
+        color: green;
+      }
+
+      .success:hover {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      /* Blue */
+
+      .info {
+        border-color: #2196F3;
+        color: dodgerblue
+      }
+
+      .info:hover {
+        background: #2196F3;
+        color: white;
+      }
+
+      /* Orange */
+
+      .warning {
+        border-color: #ff9800;
+        color: orange;
+      }
+
+      .warning:hover {
+        background: #ff9800;
+        color: white;
+      }
+
+      /* Red */
+
+      .danger {
+        border-color: #f44336;
+        color: red
+      }
+
+      .danger:hover {
+        background: #f44336;
+        color: white;
+      }
+
+      /* Gray */
+
+      .default {
+        border-color: #e7e7e7;
+        color: black;
+      }
+
+      .default:hover {
+        background: #e7e7e7;
+      }
+
+      .btn {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        padding: 30px 30px;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      body {
+        background: #6441A5;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #2a0845, #6441A5);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #2a0845, #6441A5);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Create three equal columns that floats next to each other */
+
+      .column {
+        margin-top: 140px;
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        height: 300px;
+
+      }
+
+      /* Clear floats after the columns */
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+    <title>All Data School of Magician</title>
+  </head>
+
+  <body>
+
+    <div class="row">
+      <div class="column" style="background-color:#aaa;">
+        <h2>Students data:</h2>
+        <a href="/students">  <button class="btn success">Students Data</button></a>
+      </div>
+      <div class="column" style="background-color:#bbb;">
+        <h2>Teachers Data:</h2>
+
+        <a href="/teachers"><button class="btn warning">Teachers data</button></a>
+      </div>
+      <div class="column" style="background-color:#ccc;">
+        <h2>Subjects data:</h2>
+
+        <a href="/subjects">  <button class="btn danger">Subject Data</button></a>
+      </div>
+    </div>
+
+
+
+  </body>
+
+</html>

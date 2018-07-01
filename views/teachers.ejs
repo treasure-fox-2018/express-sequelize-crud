@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>list of all Teachers data</title>
+  </head>
+
+  <body>
+    <h2 align="center">Teachers DATA</h2>
+    <p align="center"><a href="/teachers/add">Add Teachers data</a></p>
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Option</th>
+      </tr>
+
+      <% teachers.forEach( (teacher) =>{   %>
+
+        <tr>
+          <td>
+            <%=teacher.first_name%>
+          </td>
+          <td>
+            <%=teacher.last_name%>
+          </td>
+          <td>
+            <%=teacher.email%>
+          </td>
+          <td><a href="/teachers/edit/<%=teacher.id%>">edit</a> | <a onclick="return confirm('delete this teacher?')" href="/teachers/delete/<%=teacher.id%>">delete</a></td>
+        </tr>
+
+        <%  })%>
+    </table>
+
+  </body>
+
+</html>
