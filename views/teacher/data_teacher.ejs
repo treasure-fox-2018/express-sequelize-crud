@@ -8,7 +8,7 @@
         <table class="table">
           <thead style="background: #FDD835">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">No</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Email</th>
@@ -16,26 +16,26 @@
             </tr>
           </thead>
           <tbody>
-            <% dataTeacher.forEach(dataTeacher => { %>
+            <% for (let i = 0; i < dataTeacher.length; i++) { %>
               <tr>
                 <td>
-                  <%= dataTeacher.id %>
+                  <%= i + 1 %>
                 </td>
                 <td>
-                  <%= dataTeacher.first_name %>
+                  <%= dataTeacher[i].first_name %>
                 </td>
                 <td>
-                  <%= dataTeacher.last_name %>
+                  <%= dataTeacher[i].last_name %>
                 </td>
                 <td>
-                  <%= dataTeacher.email %>
+                  <%= dataTeacher[i].email %>
                 </td>
                 <td>
-                  <a href="/teacher/edit/<%= dataTeacher.id %>" class="btn btn-primary">Edit</a>
-                  <a href="/teacher/delete/<%= dataTeacher.id %>" class="btn btn-primary">Delete</a>
+                  <a href="/teacher/edit/<%= dataTeacher[i].id %>" class="btn btn-primary">Edit</a>
+                  <a href="/teacher/delete/<%= dataTeacher[i].id %>" class="btn btn-primary">Delete</a>
                 </td>
               </tr>
-              <% }) %>
+              <% } %>
           </tbody>
         </table>
       </div>
