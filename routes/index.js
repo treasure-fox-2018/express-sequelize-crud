@@ -3,14 +3,49 @@
 const routes = require('express').Router()
 const path = require('path')
 const ejs = require('ejs')
+const Student = require('../Controllers/controller-student.js')
 
 routes.get('/', (req, res) => {
     res.render('homepage')
 })
 
-// routes.get('/student', (req, res) => {
-//     res.render('student')
-// })
+routes.get('/student', (req, res) => {
+    Student.showStudents()
+    .then(students => {
+        res.render('student', {students})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
+routes.get('/student/add', (req, res) => {
+    res.render('student-add')
+})
+
+routes.post('/student/add', (req, res) => {
+    let studentData = req.body
+    Student.addStudent(studentData)
+    Student.showStudents()
+    .then(students => {
+        res.render('student', {students})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
+routes.get('/student/delete/:id', (req, res) => {
+    Student.deleteStudent(req.params.id)
+    Student.showStudents()
+    .then(students => {
+        res.render('student', {students})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
 //
 // routes.post('/student', (req, res) => {
 //     let studentData = req.body

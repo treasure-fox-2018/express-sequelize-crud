@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>Student Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body style="padding: 50px 0px">
+  <div class="container">
+    <h2>Student Form</h2>
+  </div>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% students.forEach(student => { %>
+               <tr>
+                 <td>
+                   <%= student.id %>
+                 </td>
+                 <td>
+                   <%= student.first_name %>
+                 </td>
+                 <td>
+                   <%= student.last_name %>
+                 </td>
+                 <td><a href="#>" class="btn btn-primary">Edit</a>
+                     <a href="/student/delete/<%= student.id %>" class="btn btn-primary">Delete</a>
+                 </td>
+               </tr>
+               <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container text-center">
+    <button type="button" class="btn btn-info" onclick="window.location.href='/student/add'">Add Student</button>
+  </div>
+</body>
+</html>
