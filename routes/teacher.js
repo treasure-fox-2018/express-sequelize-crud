@@ -1,86 +1,59 @@
 const router     = require('express').Router();
 const Controller = require('../controller/teacher')
 
-router.get('/teacher', (req, res) => {
+router.get('/teachers', (req, res) => {
   Controller.findAll()
     .then (dataTeachers => {
-      res.send({dataTeachers});
-      // res.render('./teacher/data_teacher', {dataTeachers})
+      // res.send({dataTeachers});
+      res.render('./teacher/index', {dataTeachers})
     })
     .catch(err => {
-      console.log(err)
+      res.send(err)
     })
 })
 
-router.get('/teacher/add', (req, res) => {
+router.get('/teachers/add', (req, res) => {
   res.render('./teacher/add')
 })
 
-router.post('/teacher/add', (req, res) => {
+router.post('/teachers/add', (req, res) => {
+  // console.log(req.body)
   Controller.add (req.body)
     .then(() => {
-      Controller.findAll()
-        .then(dataTeachers => {
-          res.render("./teacher/add", {dataTeachers})
-        })
-        .catch(err => {
-          console.log(err)
-        })
+       res.redirect('/teachers')
     })
     .catch(err => {
-      console.log(err)
+      res.send(err)
     })
 })
 
-router.get('/teacher/edit/:id', (req, res) => {
+router.get('/teachers/edit/:id', (req, res) => {
   Controller.findById(req.params.id)
     .then(editTeacher => {
       res.render('./teacher/edit', {editTeacher})
     })
     .catch(err => {
-      console.log(err)
+      res.send(err)
     })
 })
 
-router.post('/teacher/edit/:id', (req, res) => {
+router.post('/teachers/edit/:id', (req, res) => {
   Controller.update(req.params.id, req.body)
     .then(() => {
-      Controller.findAll()
-        .then(dataTeachers => {
-          res.render('./teacher/data', {dataTeachers})
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      res.redirect('/teachers')
     })
     .catch(err => {
-      console.log(err)
+      res.send(err)
     })
 })
 
-router.get('/teacher/delete/:id', (req, res) => {
-  Controller.findById(req.params.id)
-    .then(deleteTeacher => {
-      res.render('./teacher/delete', {deleteTeacher})
-    })
-    .catch(err => {
-      console.log(err)
-    })
-})
-
-router.post('/teacher/delete/:id', (req, res) => {
+router.get('/teachers/delete/:id', (req, res) => {
   Controller.delete(req.params.id)
-    .then(() => {
-      Controller.findAll()
-        .then(dataTeachers => {
-          res.render('./teacher/data', {dataTeachers})
-        })
-        .catch(err => {
-          console.log(err)
-        })
+    .then(deleteTeacher => {
+      res.redirect('/teachers')
     })
     .catch(err => {
-      console.log(err)
+      res.send(err)
     })
 })
 
