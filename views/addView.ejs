@@ -8,7 +8,15 @@
 </head>
 <body>
 <% if (category === 'subject') { %>
+  <h3>Add new subject</h3>
   <form action="/subjects/add" method="post">
+    Subject name:<br>
+    <input type="text" name="subject_name" value= <%= data.subject_name %>>
+    <br><br>
+    <input type="submit" value="Submit">
+    <% if (err !== null) { %>
+      <p style="color: red;"><%= err %></p>
+    <% } %>
   </form>
 <% } else { %>
   <% if (category === 'teacher') { %>
