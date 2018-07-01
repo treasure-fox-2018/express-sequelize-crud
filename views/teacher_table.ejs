@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Teacher Page</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h3>Teacher Data</h3>
+	<a href="/teacher/add">add teacher</a> 
+	<br><br>  
+	<table border=1>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% teacher.forEach((teacher) => { %>
+				<tr>
+					<td><%=teacher.id%></td>
+					<td><%=teacher.first_name%></td>
+					<td><%=teacher.last_name%></td>
+					<td><%=teacher.email%></td>
+					<td><a href="/teacher/edit/<%= teacher.id %>">Edit</a></td>
+					<td><a href="/teacher/delete/<%= teacher.id%>" onclick="return confirm('Are you sure?')">Delete</td>
+				</tr>
+			<% }) %>
+		</tbody>
+    </table><br>
+	<h3><a href="/">Back</a></h3>
+</body>
+</html>

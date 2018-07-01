@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Student Page</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+    <h3>Student Data</h3>
+    <a href="/student/add">add student</a>
+	<br><br>
+	<table border=1>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% student.forEach((student) => { %>
+				<tr>
+					<td><%=student.id%></td>
+					<td><%=student.first_name%></td>
+					<td><%=student.last_name%></td>
+					<td><%=student.email%></td>
+					<td><a href="/student/edit/<%= student.id %>">Edit</a></td>
+					<td><a href="/student/delete/<%= student.id%>" onclick="return confirm('Are you sure?')">Delete</td>
+				</tr>
+			<% }) %>
+		</tbody>
+    </table><br>
+	<h3><a href="/">Back</a></h3>
+</body>
+</html>

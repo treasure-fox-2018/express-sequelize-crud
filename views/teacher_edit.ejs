@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Teacher Form</h2>
+    <a href='/teacher'>show all data</a>
+    
+    <form action="/teacher/edit/<%=teacher.id%>" method="POST">
+    <br>
+    First name:<br>
+    <input type="text" name="first_name" value=<%=teacher.first_name%>>
+    <br>
+    Last name:<br>
+    <input type="text" name="last_name" value=<%=teacher.last_name%>
+    <br><br>
+    Email:<br>
+    <input type="text" name="email" value=<%=teacher.email%>
+    <br>
+    <br><br>
+    <button type="submit" onclick="alert('Succesfully updated')" value="submit">Edit Teacher</button>
+    </form> 
+</body>
+</html>
