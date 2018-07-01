@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-LlPOZK7jvvPEMrrhdqVlEYmX2u/GWKdcq/p7wuVYAUladqNeK7VN1PUZQDmiqlql" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partial/header.ejs') %>
+    <h3><%= title %> data</h3>
+    <a href="/<%= title %>/add">add <%= title %> </a>
+    <br>
+    <br>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>No</th>
+                <% for(let i in records[0]){ %>
+                    <%if (i != 'id'){ %>
+                       <th> <%- i %> </th>
+                    <% } %>
+                <% } %>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% records.forEach((el,idx)=>{ %>
+                <tr>
+                    <td><%- idx + 1 %></td>
+                    <% for(let i in el){ %>
+                        <%if (i != 'id'){ %>
+                           <td> <%- el[i] %> </td>
+                        <% } %>
+                    <% } %>
+                    <td>
+                        <a href="/<%= title %>/edit/<%= el.id %>">EDIT</a> 
+                        ||
+                        <a href="/<%= title %>/delete/<%= el.id %>">DELETE</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

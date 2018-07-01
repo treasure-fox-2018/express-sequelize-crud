@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-LlPOZK7jvvPEMrrhdqVlEYmX2u/GWKdcq/p7wuVYAUladqNeK7VN1PUZQDmiqlql" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partial/header.ejs') %>
+    <h2>add <%= title %> data</h2>
+    <a href="/<%= title %>">show all data</a>
+    <form action="/<%= title %>/add" method="POST">
+        <br>
+        <br>
+        <%if (title === "subjects"){ %>
+        <div class="form-group">
+                <label class="col-form-label" for="inputDefault">subject_name</label>
+                <input type="text" name="subject_name"  class="form-control" placeholder="subject name" id="inputDefault">
+        </div>
+        <% }else{ %>
+        <div class="form-group">
+                <label class="col-form-label" for="inputDefault">first_name</label>
+                <input type="text" name="first_name"  class="form-control" placeholder="first name" id="inputDefault">
+        </div>
+        <div class="form-group">
+                <label class="col-form-label" for="inputDefault">last_name</label>
+                <input type="text" name="last_name" class="form-control" placeholder="last name" id="inputDefault">
+        </div>
+        <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <% } %>
+        <input type="submit" value="add <%= title %>" class="btn btn-primary">
+    </form>
+</body>
+</html>

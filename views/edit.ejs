@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-LlPOZK7jvvPEMrrhdqVlEYmX2u/GWKdcq/p7wuVYAUladqNeK7VN1PUZQDmiqlql" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partial/header.ejs') %>
+    <h2>edit <%= title %> Data</h2>
+    <a href="/students">show all data</a>
+    <form action="/<%= title %>/edit/<%= record.id %>" method="POST">
+        <br>
+        <br>
+        <% for(let i in record.dataValues){ %>
+                <% if(i !== "id" && i !== "createdAt" && i !== "updatedAt" ){ %>
+                        <%if(i === "email" ){ %>
+                                <div class="form-group">
+                                        <label for="exampleInputEmail1"><%- i %></label>
+                                        <input type="email" name="<%- i %>" value="<%- record[i] %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<%- i %>">
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                        <% }else{ %>
+                                <div class="form-group">
+                                        <label class="col-form-label" for="inputDefault"><%- i %></label>
+                                        <input type="text" name="<%- i %>" value="<%- record[i] %>" class="form-control" placeholder="<%- i %>" id="inputDefault">
+                                </div>
+
+                        <% } %>
+                <% } %>
+        <% } %>
+        
+
+        <input type="submit" value="Edit Student" class="btn btn-primary">
+    </form>
+</body>
+</html>
