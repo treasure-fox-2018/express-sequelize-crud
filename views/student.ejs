@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+<body>
+  <h1>Student Data</h1>
+  <h2>
+    <a href="/students/add" >Add Student here</a>
+  </h2>
+    <table style="width:100%">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Options</th>
+      </tr>
+    </thead> 
+
+    <tbody>
+    <% student.forEach(function(element){ %>
+      <tr>
+        <td><%- element.id %></td>
+        <td><%- element.first_name %></td>
+        <td><%- element.last_name %></td>
+        <td><%- element.email %></td>
+        <td>
+          <a href="/students/edit/<%= element.id %>">Edit</a> | <a href="students/delete/<%= element.id %>" onclick="return confirm(`delete this student with id:<%= element.id %> ?`)">Delete</a>
+        </td>
+      </tr>
+    <%})%>
+    </tbody>
+  </table>
+    
+</body>
+</html>
+
