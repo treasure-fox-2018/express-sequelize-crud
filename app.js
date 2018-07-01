@@ -9,7 +9,7 @@ app.set('view engine', 'ejs')
 
 
 app.get("/",function(req,res){
-    res.send("tes")
+    res.render("home")
 })
 app.use("/",teacher)
 app.use("/",subject)

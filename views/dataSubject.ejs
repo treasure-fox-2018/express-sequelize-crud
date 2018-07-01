@@ -11,7 +11,7 @@
                 table {
                     font-family: arial, sans-serif;
                     border-collapse: collapse;
-                    width: 10%;
+                    width: 50%;
                 }
                 
                 td, th {
@@ -32,15 +32,22 @@
                 <table>
                   <tr>
                     <th>Subject</th>
+                    <th>Option</th>
                   </tr>
                   <%for(let i=0;i<allData.length;i++){%>
                   <tr>
                      
                     <td><%=allData[i].subject_name%></td>
+                    <td>
+                        <a href ="/subject/<%=allData[i].id%>/edit">edit</a>
+                        <a href = "/subject/<%=allData[i].id%>/delete">delete</a>
+                    </td>
                    
                   </tr>
                   <%}%>
                 </table>
+                <br><br>
+                <a href = "/subject/add">Add Subject</a>
         
         
 </body>
