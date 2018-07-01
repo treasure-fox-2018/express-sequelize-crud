@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="/css/style.css"> 
+  <title>Teachers List</title>
+</head>
+<body>
+    <h1>TEACHER'S LIST</h1>
+    <ul id="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/teacher/add">Add Teacher</a></li>
+    </ul>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>First_name</th>
+        <th>Last_name</th>
+        <th>Email</th>
+
+      </tr>
+      
+      <% dataTeacher.forEach(eachTeacher => {  %>
+        <tr>
+            <td><%= eachTeacher.id%></td>
+            <td><%= eachTeacher.first_name%></td>
+            <td><%= eachTeacher.last_name%></td>
+            <td><%= eachTeacher.email%></td>
+        </tr>
+      <%}) %>
+    </table>
+</body>
+</html>
