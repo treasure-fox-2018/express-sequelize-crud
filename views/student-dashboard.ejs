@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <% for (let i = 0; i < data.length; i++) { %>
+    <% for (var i = 0; i < data.length; i++) { %>
       <tr>
         <td>
           <%= i + 1 %>
@@ -32,10 +32,6 @@
         </td>
         <td>
           <%= data[i].email %>
-        </td>
-        <td>
-          <!-- <a href="/student/edit/<%= data[i].id %>" class="btn btn-primary">Edit</a>
-          <a href="/student/delete/<%= data[i].id %>" class="btn btn-primary">Delete</a> -->
         </td>
       </tr>
       <% } %>

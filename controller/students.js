@@ -16,6 +16,14 @@ class studentsController {
       email: email ,
     });
   }
+
+  static deleteStudent(first_name) {
+    return models.Student.destroy({
+      where: {
+        first_name: first_name,
+      }
+    });
+  }
 }
 
 module.exports = studentsController;
