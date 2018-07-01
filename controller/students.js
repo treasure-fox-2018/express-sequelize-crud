@@ -9,7 +9,13 @@ class studentsController {
     });
   }
 
-  static addStudent
+  static addStudent(first_name, last_name, email) {
+    return models.Student.create({
+      first_name: first_name,
+      last_name: last_name,
+      email: email ,
+    });
+  }
 }
 
 module.exports = studentsController;
