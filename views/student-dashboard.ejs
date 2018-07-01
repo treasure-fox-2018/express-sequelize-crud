@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Data</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+  <h1>Student Data</h1>
+  <table class="table">
+  <thead style="background: #DE9139">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (let i = 0; i < data.length; i++) { %>
+      <tr>
+        <td>
+          <%= i + 1 %>
+        </td>
+        <td>
+          <%= data[i].first_name %>
+        </td>
+        <td>
+          <%= data[i].last_name %>
+        </td>
+        <td>
+          <%= data[i].email %>
+        </td>
+        <td>
+          <!-- <a href="/student/edit/<%= data[i].id %>" class="btn btn-primary">Edit</a>
+          <a href="/student/delete/<%= data[i].id %>" class="btn btn-primary">Delete</a> -->
+        </td>
+      </tr>
+      <% } %>
+  </tbody>
+  <li><a href="/student/edit" >Edit</a></li>
+  <li><a href="/student/add" >Add</a></li>
+  <li><a href="/student/delete" >Delete</a></li>
+
+</body>
+</html>
