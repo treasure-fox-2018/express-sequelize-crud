@@ -4,7 +4,7 @@ const Controller = require('../controller/controllerStudent')
 routes.get('/student', (req, res) => {
   Controller.dataStudent()
     .then(dataStudent => {
-      res.render('data_student', {dataStudent})
+      res.render('./student/data_student', {dataStudent})
     })
     .catch(err => {
       console.log(err);
@@ -12,14 +12,14 @@ routes.get('/student', (req, res) => {
 })
 
 routes.get('/student/add', (req, res) => {
-  res.render('add_student')
+  res.render('./student/add_student')
 })
 routes.post('/student/add', (req, res) => {
   Controller.addStudent(req.body.first_name, req.body.last_name, req.body.email)
     .then(() => {
       Controller.dataStudent()
         .then(dataStudent => {
-          res.render("add_student", {dataStudent})
+          res.render("./student/add_student", {dataStudent})
         })
     })
     .catch(err => {
@@ -30,7 +30,7 @@ routes.post('/student/add', (req, res) => {
 routes.get('/student/edit/:id', (req, res) => {
   Controller.findStudent(req.params.id)
     .then(editStudent => {
-      res.render('edit_student', {editStudent})
+      res.render('./student/edit_student', {editStudent})
     })
     .catch(err => {
       console.log(err);
@@ -42,7 +42,7 @@ routes.post('/student/edit/:id', (req, res) => {
     .then(() => {
       Controller.dataStudent()
         .then(dataStudent => {
-          res.render('data_student', {dataStudent})
+          res.render('./student/data_student', {dataStudent})
         })
         .catch(err => {
           console.log(err);
@@ -56,7 +56,7 @@ routes.post('/student/edit/:id', (req, res) => {
 routes.get('/student/delete/:id', (req, res) => {
   Controller.findStudent(req.params.id)
     .then(deleteStudent => {
-      res.render('delete_student', {deleteStudent})
+      res.render('./student/delete_student', {deleteStudent})
     })
     .catch(err => {
       console.log(err);
@@ -68,7 +68,7 @@ routes.post('/student/delete/:id', (req, res) => {
     .then(() => {
       Controller.dataStudent()
         .then(dataStudent => {
-          res.render('data_student', {dataStudent})
+          res.render('./student/data_student', {dataStudent})
         })
         .catch(err => {
           console.log(err);

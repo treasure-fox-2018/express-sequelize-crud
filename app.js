@@ -16,6 +16,11 @@ app.use(routesTeacher)
 app.use(routesStudent)
 app.use(routesSubject)
 
-app.listen(port, () => {
-  console.log(`Listening app on port http://localhost:${port}`);
+app.listen(port, (err) => {
+  if (!err) {
+    console.log(`Listening app on port http://localhost:${port}`);
+  } else {
+    console.log(JSON.stringify(err));
+    
+  }
 })

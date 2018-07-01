@@ -4,7 +4,7 @@ const ControllerTeacher = require('../controller/controllerTeacher')
 routes.get('/teacher', (req, res) => {
   ControllerTeacher.dataTeacher()
     .then(dataTeacher => {
-      res.render('data_teacher', {dataTeacher})
+      res.render('./teacher/data_teacher', {dataTeacher})
     })
     .catch(errDataTeacher => {
       console.log(errDataTeacher);
@@ -12,7 +12,7 @@ routes.get('/teacher', (req, res) => {
 })
 
 routes.get('/teacher/add', (req, res) => {
-  res.render('add_teacher')
+  res.render('./teacher/add_teacher')
 })
 
 routes.post('/teacher/add', (req, res) => {
@@ -20,7 +20,7 @@ routes.post('/teacher/add', (req, res) => {
     .then(() => {
       ControllerTeacher.dataTeacher()
         .then(dataTeacher => {
-          res.render("add_teacher", {dataTeacher})
+          res.render("./teacher/add_teacher", {dataTeacher})
         })
     })
     .catch(err => {
@@ -31,7 +31,7 @@ routes.post('/teacher/add', (req, res) => {
 routes.get('/teacher/edit/:id', (req, res) => {
   ControllerTeacher.findTeacher(req.params.id)
     .then(editTeacher => {
-      res.render('edit_teacher', {editTeacher})
+      res.render('./teacher/edit_teacher', {editTeacher})
     })
     .catch(err => {
       console.log(err);
@@ -43,7 +43,7 @@ routes.post('/teacher/edit/:id', (req, res) => {
     .then(() => {
       ControllerTeacher.dataTeacher()
         .then(dataTeacher => {
-          res.render('data_teacher', {dataTeacher})
+          res.render('./teacher/data_teacher', {dataTeacher})
         })
         .catch(err => {
           console.log(err);
@@ -57,7 +57,7 @@ routes.post('/teacher/edit/:id', (req, res) => {
 routes.get('/teacher/delete/:id', (req, res) => {
   ControllerTeacher.findTeacher(req.params.id)
     .then(deleteTeacher => {
-      res.render('delete_teacher', {deleteTeacher})
+      res.render('./teacher/delete_teacher', {deleteTeacher})
     })
     .catch(err => {
       console.log(err);
@@ -69,7 +69,7 @@ routes.post('/teacher/delete/:id', (req, res) => {
     .then(() => {
       ControllerTeacher.dataTeacher()
         .then(dataTeacher => {
-          res.render('data_teacher', {dataTeacher})
+          res.render('./teacher/data_teacher', {dataTeacher})
         })
         .catch(err => {
           console.log(err); 
