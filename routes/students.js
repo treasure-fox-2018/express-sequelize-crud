@@ -21,29 +21,11 @@ app.get("/student/add", function(req, res) {
     Form: "Student Registration",
     Message: "Enter Information Below"
   })
-  // controller.addStudent(input.first_name, input.last_name, input.email)
-  // .then(data => {
-  //   res.render('../views/student-dashboard', {data})
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  // })
-  // // res.render("../views/student-dashboard.ejs", {Username: String(info.username), Password: String(info.psw)})
-  // res.end();
 })
 
 app.post("/student/add", function(req, res) {
   let input = req.body;
   controller.addStudent(input.first_name, input.last_name, input.email)
-  //   .then(data => {
-  //     res.render('../views/student-dashboard', {
-  //       data
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  // // res.render("../views/student-dashboard.ejs", {Username: String(info.username), Password: String(info.psw)})
   res.redirect('/student')
 })
 
@@ -58,16 +40,21 @@ app.get("/student/delete", function(req, res) {
 app.post("/student/delete", function(req, res) {
   let input = req.body;
   controller.deleteStudent(input.first_name)
-  //   .then(data => {
-  //     res.render('../views/student-dashboard', {
-  //       data
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  // // res.render("../views/student-dashboard.ejs", {Username: String(info.username), Password: String(info.psw)})
-  res.redirect('/student')
+  res.redirect('/student/edit')
+})
+
+app.get("/student/edit", function(req, res) {
+  let input = req.body;
+  res.render('../views/student-search-page', {
+    Form: "Student Edit",
+    Message: "Enter Student ID | Leave unchanged information form blank"
+  })
+})
+
+app.post("/student/edit", function(req, res) {
+  let input = req.body;
+  controller.editStudent(input.id, input.first_name, input.last_name, input.email)
+  res.redirect('/student');
 })
 
 
