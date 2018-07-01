@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Students</title>
+</head>
+<!-- <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style> -->
+<body>
+  <h1>Student Data</h1>
+  <!-- <h2>
+    <a href="/students/add" >Add Student here</a>
+  </h2> -->
+    <table border="2">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <!-- <th>Options</th> -->
+      </tr>
+    </thead> 
+
+    <tbody>
+    <% studentdata.forEach(student => { %>
+      <tr>
+        <td><%= studentdata.id %></td>
+        <td><%= studentdata.first_name %></td>
+        <td><%= studentdata.last_name %></td>
+        <td><%= studentdata.email %></td>
+        <td>
+            <a href="/">Back to homepage</a>
+            <p><a href="/students/add">Add Student</a></p>
+          <!-- <a href="/students/edit/<%= studentdata.id %>">Edit</a> | <a href="students/delete/<%= studentdata.id %>" onclick="return confirm(`delete this student with id:<%= studentdata.id %> ?`)">Delete</a> -->
+        </td>
+      </tr>
+    <%})%>
+    </tbody>
+  </table>
+    
+</body>
+</html>
