@@ -2,7 +2,7 @@ const models = require('../models');
 const Sequelize = require('Sequelize');
 const Op = Sequelize.Op;
 
-class teachersController {
+class studentsController {
   static showAllData() {
     return models.Teacher.findAll({
       order: [
@@ -64,4 +64,4 @@ class teachersController {
   }
 }
 
-module.exports = teachersController;
+module.exports = studentsController;
