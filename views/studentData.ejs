@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/studentData.css" />
+    <script src="main.js"></script>
+
+    <nav id="head">
+
+        <div id='logo'>
+            <img src='https://hacktiv8.com/img/logo-hacktiv8_bordered--md5--f7ee5fc69819b5ef3849344c119f5e18.png'>
+
+        </div>
+
+
+    </nav>
+</head>
+
+
+<body>
+    <div class=content_top></div>
+    <section>
+        <h1> Student Data</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+
+                    <tr>
+                        <th> id</th>
+                        <th> first_name</th>
+                        <th>last_name</th>
+                        <th>email</th>
+                        <th>options</th>
+
+                    </tr>
+
+                    <% for(let i=0;i<Students.length;i++){%>
+                        <tr>
+
+                            <td>
+                                <%= Students[i].id %>
+                            </td>
+                            <td>
+                                <%= Students[i].first_name %>
+                            </td>
+
+                            <td>
+                                <%= Students[i].last_name %>
+                            </td>
+                            <td>
+                                <%= Students[i].email %>
+                            </td>
+
+                            <td>
+                                <a href="/Students/delete/<%= Students[i].id %>" onclick="return confirm('are you sure?');">Delete</a>
+                                <a href="/Students/edit/<%= Students[i].id %>">Edit</a> |
+
+                            </td>
+                        </tr>
+                        <% } %>
+
+                </thead>
+
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <tr>
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <p style="text-align: center">
+            <a href="/students/add">Add Student</a>
+        </p>
+        <br>
+        <p style="text-align: center">
+
+        </p>
+
+    </section>
+
+
+        <script src="studentData.css"></script>
+
+
+</body>
+
+</html>
