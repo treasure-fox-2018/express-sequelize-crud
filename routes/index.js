@@ -27,40 +27,46 @@ routes.post('/student/add', (req, res) => {
     let studentData = req.body
     Student.addStudent(studentData)
     Student.showStudents()
-    .then(students => {
-        res.render('student', {students})
+    .then(() => {
+        res.redirect('/student')
     })
     .catch(err => {
         console.log(err)
     })
+})
+
+routes.get('/student/edit/:studentId', (req, res) => {
+    let studentId = req.params.studentId
+
+    Student.findStudentById(req.params.studentId)
+    .then(student => {
+        res.render('student-edit', {student:student})
+    })
+    .catch(err => console.log(err))
+})
+
+routes.post('/student/edit/:studentId', (req, res) => {
+    let studentId = req.params.studentId
+
+    let newStudentFirstname = req.body.first_name
+    let newStudentLastname = req.body.last_name
+
+    Student.updateStudent(studentId, newStudentFirstname, newStudentLastname)
+    .then(() =>
+        res.redirect('/student')
+    )
+    .catch(err => console.log(err))
 })
 
 routes.get('/student/delete/:id', (req, res) => {
     Student.deleteStudent(req.params.id)
     Student.showStudents()
-    .then(students => {
-        res.render('student', {students})
+    .then(() => {
+        res.redirect('/student')
     })
     .catch(err => {
         console.log(err)
     })
 })
-
-//
-// routes.post('/student', (req, res) => {
-//     let studentData = req.body
-//     res.render('student-show.ejs', {
-//         firstname : `${studentData.inputFirstname}`,
-//         lastname : `${studentData.inputLastname}`,
-//         gender : `${studentData.inputGender}`,
-//         birthday : `${studentData.inputDOB}`,
-//         email : `${studentData.inputEmail}`,
-//         phone : `${studentData.inputPhone}`
-//     })
-// })
-//
-// routes.get('/teacher', (req, res) => {
-//     res.render('teacher')
-// })
 
 module.exports = routes

@@ -19,6 +19,7 @@
           <th>Firstname</th>
           <th>Lastname</th>
           <th>Action</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +34,7 @@
                  <td>
                    <%= student.last_name %>
                  </td>
-                 <td><a href="#>" class="btn btn-primary">Edit</a>
+                 <td><a href="/student/edit/<%= student.id%>" class="btn">Edit</a>
                      <a href="/student/delete/<%= student.id %>" class="btn btn-primary">Delete</a>
                  </td>
                </tr>

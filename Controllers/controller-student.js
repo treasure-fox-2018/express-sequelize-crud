@@ -19,6 +19,14 @@ class ControllerStudent {
         return Students.destroy({where: {id: id}})
     }
 
+    static findStudentById(studentId) {
+        return Students.findById(studentId)
+    }
+
+    static updateStudent(studentId, studentFirstname, studentLastname) {
+        return Students.update({first_name: studentFirstname, last_name: studentLastname}, {where: {id: studentId}})
+    }
+
 }
 
 module.exports = ControllerStudent
