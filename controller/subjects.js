@@ -2,58 +2,45 @@ const models = require('../models');
 const Sequelize = require('Sequelize');
 const Op = Sequelize.Op;
 
-class studentsController {
+class subjectsController {
   static showAllData() {
-    return models.Teacher.findAll({
+    return models.Subject.findAll({
       order: [
         ["id", "ASC"]
       ]
     });
   }
 
-  static addTeacher(first_name, last_name, email) {
-    return models.Teacher.create({
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
+  static addSubject(subject_name) {
+    return models.Subject.create({
+      subject_name: subject_name,
     });
   }
 
-  static deleteTeacher(teacherID) {
-    return models.Teacher.destroy({
+  static deleteSubject(subjectID) {
+    return models.Subject.destroy({
       where: {
-        id: teacherID,
+        id: subjectID,
       }
     });
   }
 
-  static editTeacher(id, first_name, last_name, email) {
+  static editSubject(id, subject_name, last_name, email) {
     return (
-      models.Teacher.findById(Number(id), {
+      models.Subject.findById(Number(id), {
         raw: true
       }).then((data) => {
-        // console.log([first_name, last_name, email]);
-        if (first_name === '') {
-          var processed_first_name = data.first_name;
+        // console.log([subject_name, last_name, email]);
+        if (subject_name === '') {
+          var processed_subject_name = data.subject_name;
         } else {
-          var processed_first_name = first_name
+          var processed_subject_name = subject_name
         }
-        if (last_name === '') {
-          var processed_last_name = data.last_name;
-        } else {
-          var processed_last_name = last_name
-        }
-        if (email === '') {
-          var processed_email = data.email;
-        } else {
-          var processed_email = email
-        }
-        console.log(data);
-        console.log([processed_first_name, processed_last_name, processed_email]);
-        models.Teacher.update({
-          first_name: processed_first_name,
-          last_name: processed_last_name,
-          email: processed_email,
+
+        // console.log(data);
+        // console.log([processed_subject_name, processed_last_name, processed_email]);
+        models.Subject.update({
+          subject_name: processed_subject_name,
         }, {
           where: {
             id: `${id}`
@@ -64,4 +51,4 @@ class studentsController {
   }
 }
 
-module.exports = studentsController;
+module.exports = subjectsController;

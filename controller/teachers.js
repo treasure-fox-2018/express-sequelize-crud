@@ -48,8 +48,8 @@ class teachersController {
         } else {
           var processed_email = email
         }
-        console.log(data);
-        console.log([processed_first_name, processed_last_name, processed_email]);
+        // console.log(data);
+        // console.log([processed_first_name, processed_last_name, processed_email]);
         models.Teacher.update({
           first_name: processed_first_name,
           last_name: processed_last_name,
