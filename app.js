@@ -8,6 +8,8 @@ const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const express = require('express');
 app.set("view engine", "ejs");
+app.locals.teacher_helper = require("./helpers/teacherHelper")
+app.locals.subject_helper = require('./helpers/subjectHelper');
 
 
 app.use(express.static(__dirname + '/public'));

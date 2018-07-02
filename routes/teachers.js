@@ -5,6 +5,7 @@ const controller = require('../controller/teachers');
 app.get('/teacher', (req, res) => {
   controller.showAllData()
     .then(teacherData => {
+      // console.log(teacherData[1].Subject.subject_name);
       res.render('../views/teacher-dashboard', {
         data: teacherData
       })
@@ -19,18 +20,23 @@ app.get("/teacher/add", function(req, res) {
   let input = req.body;
   res.render('../views/teacher-page', {
     Form: "Teacher Registration",
-    Message: "Enter Information Below"
+    Message: "Enter Information Below",
+    error_message: "Welcome"
   })
 })
 
 app.post("/teacher/add", function(req, res) {
   let input = req.body;
-  controller.addTeacher(input.first_name, input.last_name, input.email)
+  controller.addTeacher(input.first_name, input.last_name, input.email, input.SubjectId)
   .then(() => {
     res.redirect('/teacher')
   })
-  .catch(err => {
-    res.send(err);
+  .catch((err) => {
+    res.render('../views/teacher-page', {
+      Form: "Teacher Registration",
+      Message: "Enter Information Below",
+      error_message: err.message
+    })
   })
 })
 
@@ -44,7 +50,7 @@ app.get("/teacher/edit/:id", function(req, res) {
 
 app.post("/teacher/edit/:id", function(req, res) {
   let input = req.body;
-  controller.editTeacher(req.params.id, input.first_name, input.last_name, input.email)
+  controller.editTeacher(req.params.id, input.first_name, input.last_name, input.email, input.SubjectId)
   .then(() => {
     res.redirect('/teacher');
   })

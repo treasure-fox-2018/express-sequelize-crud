@@ -8,11 +8,14 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
  </head>
  <body>
+   <%- include("./partials/header.ejs") %>
 
    <form action="/student/add" method="post">
    <div class="container">
+     <h1><%= error_message %></h1>
      <h1><%= Form %></h1>
      <p><%= Message %></p>
+
      <hr>
 
      <label for="first_name"><b>First Name</b></label>

@@ -19,7 +19,8 @@ app.get("/student/add", function(req, res) {
   let input = req.body;
   res.render('../views/student-page', {
     Form: "Student Registration",
-    Message: "Enter Information Below"
+    Message: "Enter Information Below",
+    error_message: "Welcome",
   })
 })
 
@@ -29,8 +30,12 @@ app.post("/student/add", function(req, res) {
   .then(() => {
     res.redirect('/student')
   })
-  .catch(err => {
-    res.send(err);
+  .catch((err) => {
+    res.render('../views/student-page', {
+      Form: "Student Registration",
+      Message: "Enter Information Below",
+      error_message: err.message,
+    })
   })
 })
 
@@ -51,7 +56,7 @@ app.post("/student/edit/:id", function(req, res) {
     res.redirect('/student');
   })
   .catch((err) => {
-    res.send(err)
+    res.send(err.msg)
   })
 })
 

@@ -5,6 +5,7 @@ const controller = require('../controller/subjects');
 app.get('/subject', (req, res) => {
   controller.showAllData()
     .then(subjectData => {
+      console.log(subjectData);
       res.render('../views/subject-dashboard', {
         data: subjectData
       })

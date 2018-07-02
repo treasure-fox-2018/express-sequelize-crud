@@ -7,7 +7,8 @@ class subjectsController {
     return models.Subject.findAll({
       order: [
         ["id", "ASC"]
-      ]
+      ],
+      include: [models.Teacher],
     });
   }
 

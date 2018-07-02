@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: new Date(),
   }, {});
   Subject.associate = function(models) {
-    // associations can be defined here
+    Subject.hasMany(models.Teacher)
   };
   return Subject;
 };

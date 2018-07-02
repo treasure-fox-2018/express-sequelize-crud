@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
  </head>
  <body>
+   <%- include("./partials/header.ejs") %>
 
    <form action="/teacher/edit/<%= id %>" method="post">
    <div class="container">
@@ -23,6 +24,9 @@
 
      <label for="email"><b>Email</b></label>
      <input type="text" placeholder="Enter Email" name="email">
+
+     <label for="SubjectId"><b>SubjectId</b></label>
+     <input type="text" placeholder="Enter SubjectId" name="SubjectId">
 
      <div class="clearfix">
        <button type="submit" class="btn" id="submit">Edit</button>
