@@ -2,7 +2,9 @@ const model = require('../models');
 
 class Controller {
   static showAll (){
-    return model.Student.findAll({raw:true})
+    return model.Student.findAll({raw:true, order: [
+      ['id', 'ASC']
+    ] })
   }
 
   static add(inputObj){

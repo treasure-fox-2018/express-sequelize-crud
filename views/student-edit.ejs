@@ -5,7 +5,7 @@
   <body>
     <h2><a href="/">Home</a></h2>
     <br>
-    <form action="/students/edit" method="POST">
+    <form action="/students/edit/<%= student.id %>" method="POST">
       First Name: <br/>
       <input type="text" name="first_name" value="<%= student.first_name %>"> <br/>
       Last Name: <br/>

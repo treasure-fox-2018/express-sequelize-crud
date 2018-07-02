@@ -10,10 +10,10 @@ routes.get('/', (req, res) => {
 routes.get('/students/', (req, res) => {
   student.showAll()
   .then( students => {
-    res.render('students-data', {students})
+    res.render('students-data', {students: students})
   })
   .catch( err => {
-    console.log(err)
+    res.send(err.message)
   })
 })
 
@@ -22,42 +22,53 @@ routes.get('/students/add', (req, res) => {
 })
 
 routes.post('/students/add', (req, res) => {
-  student.add(req.body)
+  let studentObj = {
+    first_name : req.body.first_name,
+    last_name : req.body.last_name,
+    email : req.body.email
+  }
+  student.add(studentObj)
   .then(()=> {
-    res.send('Data added!')
+    res.redirect('/students')
   })
   .catch(err => {
-    console.log(err)
+    res.send(err.message)
   })
 })
 
 routes.get('/students/edit/:id', (req, res) => {
   student.findById(req.params.id)
   .then((student) => {
-    res.render('student-edit', {student})
+    res.render('student-edit', {student: student})
   })
   .catch(err => {
-    console.log(err)
+    res.send(err.message)
   })
 })
 
+
 routes.post('/students/edit/:id', (req, res) => {
-  student.update(req.body, req.params.id)
+  let studentObj = {
+    first_name : req.body.first_name,
+    last_name : req.body.last_name,
+    email : req.body.email
+  }
+  student.update(studentObj, req.params.id)
   .then(() => {
-    res.send('Data updated!')
+    res.redirect('/students')
   })
   .catch(err => {
-    console.log(err)
+    res.send(err.message)
   })
 })
 
 routes.get('/students/delete/:id', (req, res)=> {
   student.delete(req.params.id)
   .then(()=> {
-    res.send('Data deleted!')
+    res.redirect('/students')
   })
   .catch(err => {
-    console.log(err)
+    res.send(err.message)
   })
 })
 
