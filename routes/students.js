@@ -4,13 +4,13 @@ const controller = require('../controller/students');
 
 app.get('/student', (req, res) => {
   controller.showAllData()
-    .then(data => {
+    .then(studentData => {
       res.render('../views/student-dashboard', {
-        data
+        data: studentData
       })
     })
     .catch(err => {
-      console.log(err);
+      res.send(err);
     })
   // res.end();
 })
@@ -26,36 +26,50 @@ app.get("/student/add", function(req, res) {
 app.post("/student/add", function(req, res) {
   let input = req.body;
   controller.addStudent(input.first_name, input.last_name, input.email)
+  .then(() => {
+    res.redirect('/student')
+  })
+  .catch(err => {
+    res.send(err);
+  })
+})
+
+app.get("/student/edit/:id", function(req, res) {
+  res.render('../views/student-edit-page', {
+    id: req.params.id,
+    Form: "Student Edit",
+    Message: "Leave unchanged information form blank"
+  })
+})
+
+app.post("/student/edit/:id", function(req, res) {
+  let input = req.body;
+  // console.log(req.params.id);
+  // console.log(input);
+  controller.editStudent(req.params.id, input.first_name, input.last_name, input.email)
+  .then(() => {
+    res.redirect('/student');
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+})
+
+app.get("/student/delete/:id", function(req, res) {
+  // console.log(req.params);
+  res.render('../views/student-delete-page', {
+    id: req.params.id,
+    Form: "Student Removal",
+    Message: "Requires Confirmation"
+  })
+})
+
+app.post("/student/delete/:id", function(req, res) {
+  let input = req.body;
+  if (input.confirm === '') {
+    controller.deleteStudent(req.params.id)
+  }
   res.redirect('/student')
 })
-
-app.get("/student/delete", function(req, res) {
-  let input = req.body;
-  res.render('../views/student-delete-page', {
-    Form: "Student Removal",
-    Message: "Enter Information Below"
-  })
-})
-
-app.post("/student/delete", function(req, res) {
-  let input = req.body;
-  controller.deleteStudent(input.first_name)
-  res.redirect('/student/edit')
-})
-
-app.get("/student/edit", function(req, res) {
-  let input = req.body;
-  res.render('../views/student-search-page', {
-    Form: "Student Edit",
-    Message: "Enter Student ID | Leave unchanged information form blank"
-  })
-})
-
-app.post("/student/edit", function(req, res) {
-  let input = req.body;
-  controller.editStudent(input.id, input.first_name, input.last_name, input.email)
-  res.redirect('/student');
-})
-
 
 module.exports = app;

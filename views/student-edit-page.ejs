@@ -9,18 +9,14 @@
  </head>
  <body>
 
-   <form action="/student/edit" method="post">
+   <form action="/student/edit/<%= id %> " method="post">
    <div class="container">
      <h1><%= Form %></h1>
      <p><%= Message %></p>
      <hr>
 
-     <label for="id"><b>Student ID</b></label>
-     <input type="text" placeholder="Enter Student ID" name="id">
-
      <label for="first_name"><b>First Name</b></label>
      <input type="text" placeholder="Enter First Name" name="first_name">
-
 
      <label for="last_name"><b>Last Name</b></label>
      <input type="text" placeholder="Enter Last Name" name="last_name">

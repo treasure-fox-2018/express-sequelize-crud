@@ -19,30 +19,41 @@ class studentsController {
     });
   }
 
-  static deleteStudent(first_name) {
+  static deleteStudent(studentID) {
     return models.Student.destroy({
       where: {
-        first_name: first_name,
+        id: studentID,
       }
     });
   }
 
   static editStudent(id, first_name, last_name, email) {
     return (
-      models.Student.findById(Number(id)).then((data) => {
-        if (first_name === null) {
-          first_name = data.first_name
+      models.Student.findById(Number(id), {
+        raw: true
+      }).then((data) => {
+        // console.log([first_name, last_name, email]);
+        if (first_name === '') {
+          var processed_first_name = data.first_name;
+        } else {
+          var processed_first_name = first_name
         }
-        if (last_name === null) {
-          last_name = data.last_name
+        if (last_name === '') {
+          var processed_last_name = data.last_name;
+        } else {
+          var processed_last_name = last_name
         }
-        if (email === null) {
-          last_name = data.last_name
+        if (email === '') {
+          var processed_email = data.email;
+        } else {
+          var processed_email = email
         }
+        console.log(data);
+        console.log([processed_first_name, processed_last_name, processed_email]);
         models.Student.update({
-          first_name: first_name,
-          last_name: last_name,
-          email: email
+          first_name: processed_first_name,
+          last_name: processed_last_name,
+          email: processed_email,
         }, {
           where: {
             id: `${id}`
